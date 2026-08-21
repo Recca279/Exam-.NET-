@@ -4,6 +4,7 @@ services:
   db:
     image: mcr.microsoft.com/azure-sql-edge:latest
     container_name: comicsystem_sqlserver
+    user: root
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Aa12345678!
