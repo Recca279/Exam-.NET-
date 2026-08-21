@@ -1,0 +1,56 @@
+@model ComicSystem.Models.RentalViewModel
+
+@{
+    ViewData["Title"] = "Rent Book";
+}
+
+<h1>Rent a Book</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="CustomerID" class="control-label">Customer</label>
+                <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
+                <span asp-validation-for="CustomerID" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="ComicBookID" class="control-label">Comic Book</label>
+                <select asp-for="ComicBookID" class="form-control" asp-items="ViewBag.ComicBookID"></select>
+                <span asp-validation-for="ComicBookID" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="RentalDate" class="control-label">Rental Date</label>
+                <input asp-for="RentalDate" class="form-control" type="datetime-local" />
+                <span asp-validation-for="RentalDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="ReturnDate" class="control-label">Return Date</label>
+                <input asp-for="ReturnDate" class="form-control" type="datetime-local" />
+                <span asp-validation-for="ReturnDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Quantity" class="control-label">Quantity</label>
+                <input asp-for="Quantity" class="form-control" type="number" min="1" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Rent" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Report">Go to Report</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

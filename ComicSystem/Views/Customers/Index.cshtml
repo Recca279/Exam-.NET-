@@ -1,0 +1,44 @@
+@model IEnumerable<ComicSystem.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>Customers</h1>
+
+<p>
+    <a asp-action="Register" class="btn btn-primary">Register New Customer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                Registration Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @item.RegistrationDate.ToString("yyyy-MM-dd HH:mm")
+            </td>
+            <td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
